@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://unpkg.com/vue"></script>
+		<meta charset="utf-8">
+		<title>Vue js sample</title>
+	</head>
+	<body>
+<div id="app-7">
+		  <ol>
+		    <!-- 
+		      todo オブジェクトによって各 todo-item を提供します。
+		      それは、内容を動的にできるように表します。
+		      また後述する "key" で各コンポーネントに提供する必要があります。
+		    -->
+		    <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+		  </ol>
+		</div>
+		<script>
+			Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li>{{ todo.text }}</li>'
+			})
+			var app7 = new Vue({
+			  el: '#app-7',
+			  data: {
+			    groceryList: [
+			      { id: 0, text: 'Vegetables' },
+			      { id: 1, text: 'Cheese' },
+			      { id: 2, text: 'Whatever else humans are supposed to eat' }
+			    ]
+			  }
+			})
+		</script>
+	</body>
+</html>
