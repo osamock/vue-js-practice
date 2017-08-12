@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>
+  <script src="./src/index.js" defer></script>
+</head>
+<body>
+
+<div id="container">
+  <main>
+    <div id="app"></div>
+  </main>
+</div>
+
+<template id="book-list">
+  <section>
+    <ul>
+      <li v-for="{id,title,price} in books">
+        {{id}}:{{title}}@{{price}}
+      </li>
+    </ul>
+  </section>
+</template>
+
+</body>
+</html>
