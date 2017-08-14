@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "json-server": "^0.12.0"
+  },
+  "scripts": {
+    "start": "json-server --watch ./data/books.json"
+  }
+}
