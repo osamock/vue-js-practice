@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/vue-router@2.7.0/dist/vue-router.min.js"></script>
+  <script src="./src/index.js" defer></script>
+</head>
+<body>
+
+<div id="container">
+  <main>
+    <div id="app"></div>
+  </main>
+</div>
+
+<template id="book-list">
+  <section>
+    <div>
+      <router-link :to="{name: 'add'}">Create New Book</router-link>
+    </div>
+    <form>
+      <input type="search" v-model="searchTitle" placeholder="title">
+    </form>
+    <ul>
+      <li v-for="{id,title,price} in filterBooks">
+        <router-link :to="{name: 'book', params: {book_id: id}}">{{id}}:{{title}}@{{price}}</router-link>
+        <router-link :to="{name: 'edit', params: {book_id: id}}">Edit</router-link>
+        <router-link :to="{name: 'remove', params: {book_id: id}}">Remove</router-link>
+      </li>
+    </ul>
+  </section>
+</template>
+
+<template id="book-ref">
+  <section>
+    <h2>{{book.title}}</h2>
+    <h4>価格：{{book.price}}</h4>
+    <router-link :to="{name: '/'}">Back to Book List</router-link>
+  </section>
+</template>
+
+<template id="book-add">
+  <section>
+    <h2>Create New Book</h2>
+    <form v-on:submit="create">
+      <p>
+        <input v-model="book.title" placeholder="title" required>
+      </p>
+      <p>
+        <input v-model="book.price" placeholder="price" required type="number">
+      </p>
+      <button>Create</button>
+      <router-link :to="{name: '/'}">Cancel</router-link>
+    </form>
+  </section>
+</template>
+
+<template id="book-edit">
+  <section>
+    <h2>Edit New Book</h2>
+    <form v-on:submit="update">
+      <p>
+        <input v-model="book.title" placeholder="title" required>
+      </p>
+      <p>
+        <input v-model="book.price" placeholder="price" required type="number">
+      </p>
+      <button>Update</button>
+      <router-link :to="{name: '/'}">Cancel</router-link>
+    </form>
+  </section>
+</template>
+
+<template id="book-remove">
+  <section>
+    <form v-on:submit="remove">
+      <h2>Delete {{book.title}}</h2>
+      <button>Remove</button>
+      <router-link :to="{name: '/'}">Cancel</router-link>
+    </form>
+  </section>
+</template>
+
+</body>
+</html>
