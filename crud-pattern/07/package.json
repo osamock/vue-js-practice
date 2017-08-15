@@ -18,7 +18,9 @@
     "webpack-dev-server": "^2.7.1"
   },
   "scripts": {
-    "startAPI": "json-server --watch ./data/books.json",
-    "startDEV": "webpack-dev-server"
+    "api": "json-server --watch ./data/books.json",
+    "build": "webpack -p --define process.env.NODE_ENV='production'",
+    "build:DEV": "webpack -d",
+    "start": "webpack-dev-server --open"
   }
 }

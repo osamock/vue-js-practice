@@ -31,11 +31,8 @@ module.exports = {
       template: `${appPath}/index.html`
     }),
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js'}),
-    // すべての Vue.js 警告コードを短絡します
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ],
 

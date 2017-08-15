@@ -2,7 +2,8 @@
 
 ```bash
 $ npm install
-$ npm run startAPI
+$ npm run buid
+$ npm run api
 ```
 
 ## API
@@ -18,7 +19,7 @@ DELETE  http://localhost:3000/books/1
 ## DevWebServer
 
 ```
-$ npm run startDEV
+$ npm run start
 ```
 
 ### Open URL
@@ -26,5 +27,3 @@ $ npm run startDEV
 ```
 http://localhost:9000/
 ```
-
-
