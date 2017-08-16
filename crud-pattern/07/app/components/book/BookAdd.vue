@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>Create New Book</h2>
-    <form v-on:submit="create">
+    <form @submit="create">
       <p>
         <input v-model="book.title" placeholder="title" required>
       </p>
@@ -15,10 +15,7 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import store from '../../store'
-
-  const BookAdd = Vue.extend({
+  export default {
     data() {
       return {
         book: {title: '', price: ''}
@@ -26,11 +23,9 @@
     },
     methods: {
       create() {
-        store.dispatch('postAsync', this.book)
+        this.$store.dispatch('postAsync', this.book)
         this.$router.push('/')
       }
     }
-  })
-
-  export default BookAdd
+  }
 </script>

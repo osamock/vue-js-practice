@@ -30,9 +30,14 @@ module.exports = {
       inject: 'body',
       template: `${appPath}/index.html`
     }),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js'}),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js'
+    }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     })
   ],
 

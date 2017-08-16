@@ -14,13 +14,13 @@
     "vue-loader": "^13.0.4",
     "vue-template-compiler": "^2.4.2",
     "webpack": "^3.5.4",
-    "webpack-vendor-chunk-plugin": "^1.0.0",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "webpack-vendor-chunk-plugin": "^1.0.0"
   },
   "scripts": {
     "api": "json-server --watch ./data/books.json",
     "build": "webpack -p --define process.env.NODE_ENV='production'",
-    "build:DEV": "webpack -d",
+    "build:DEV": "webpack -d --define process.env.NODE_ENV='development'",
     "start": "webpack-dev-server --open"
   }
 }

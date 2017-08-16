@@ -15,12 +15,9 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import store from '../../store'
-
-  const BookList = Vue.extend({
+  export default {
     created() {
-      store.dispatch('getAsync')
+      this.$store.dispatch('getAsync')
     },
     data() {
       return {
@@ -29,14 +26,11 @@
     },
     computed: {
       filterBooks() {
-        const {books} = store.state
+        const {books} = this.$store.state
         if (books !== null) {
           return Object.values(books).filter(book => book.title.indexOf(this.searchTitle) !== -1)
         }
       }
     }
-  })
-
-  export default BookList
-
+  }
 </script>

@@ -9,20 +9,15 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import store from '../../store'
-
-  const Book = Vue.extend({
+  export default {
     computed: {
       book() {
-        const {books} = store.state
+        const {books} = this.$store.state
         if (books !== null) {
           return books[this.$route.params.book_id]
         }
         this.$router.push('/')
       }
     }
-  })
-
-  export default Book
+  }
 </script>

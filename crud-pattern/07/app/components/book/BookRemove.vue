@@ -1,6 +1,6 @@
 <template>
   <section>
-    <form v-on:submit="remove" v-if="book">
+    <form @submit="remove" v-if="book">
       <h2>Delete {{book.title}}</h2>
       <button>Remove</button>
       <router-link :to="{name: '/'}">Cancel</router-link>
@@ -9,13 +9,10 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import store from '../../store'
-
-  const BookRemove = Vue.extend({
+  export default {
     computed: {
       book() {
-        const {books} = store.state
+        const {books} = this.$store.state
         if (books !== null) {
           return books[this.$route.params.book_id]
         }
@@ -24,11 +21,9 @@
     },
     methods: {
       remove() {
-        store.dispatch('removeAsync', this.book.id)
+        this.$store.dispatch('removeAsync', this.book.id)
         this.$router.push('/')
       }
     }
-  })
-
-  export default BookRemove
+  }
 </script>

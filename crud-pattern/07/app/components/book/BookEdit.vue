@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>Edit New Book</h2>
-    <form v-on:submit="update" v-if="book">
+    <form @submit="update" v-if="book">
       <p>
         <input v-model="book.title" placeholder="title" required>
       </p>
@@ -15,12 +15,9 @@
 </template>
 
 <script>
-  import Vue from 'vue'
-  import store from '../../store'
-
-  const BookEdit = Vue.extend({
+  export default {
     data() {
-      const {books} = store.state
+      const {books} = this.$store.state
       if (books !== null) {
         return {
           book: books[this.$route.params.book_id]
@@ -30,11 +27,9 @@
     },
     methods: {
       update() {
-        store.dispatch('putAsync', this.book)
+        this.$store.dispatch('putAsync', this.book)
         this.$router.push('/')
       }
     }
-  })
-
-  export default BookEdit
+  }
 </script>
